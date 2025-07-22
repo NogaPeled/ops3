@@ -1,3 +1,4 @@
+list
 Newgraph 5
 Newpoint 1 1
 Newpoint 5 1
@@ -7,3 +8,4 @@ Newpoint 15 5
 CH
 Removepoint 5 1
 CH
+
