@@ -3,22 +3,21 @@
 #include "../include/core/State.hpp"
 
 /**
- * @brief Part 2 main driver (profiling).
- * Reads commands from a test file (batch mode), applies them to vector or list implementation.
- * The first word of the input must be "vector" or "list".
+ * @brief Part 3 main.
+ * Reads commands from stdin and applies them to vector or list implementation.
  */
 int main() {
     State state;
     std::string cmd;
     enum Impl { VECTOR, LIST } currentImpl = VECTOR;
 
-    // Read implementation directly from the input
+    // Choose implementation
     std::string impl;
     if (!(std::cin >> impl)) return 0;
     if (impl == "list") currentImpl = LIST;
     else currentImpl = VECTOR;
 
-    // Process commands
+    // Command loop
     while (std::cin >> cmd) {
         if (cmd == "Newgraph") {
             int n;

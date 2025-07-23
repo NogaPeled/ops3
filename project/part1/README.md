@@ -1,28 +1,61 @@
-# Makefile for Part 1 – Convex Hull Static Implementation
+# Part 1 – Static Convex Hull
 
-CXX = g++
-CXXFLAGS = -std=c++17 -Iinclude -Wall -Wextra -O2
+## Description
+Part 1 computes the **Convex Hull (CH)** of a fixed set of 2D points using the **Graham Scan** algorithm. It outputs the points forming the convex hull in **counterclockwise (CCW)** order and calculates the **area of the hull** using the Shoelace formula.
 
-# Source files and target executable
-PART1_SRCS = src/main.cpp src/geom/Hull.cpp
-PART1_TARGET = ch_part1
+## Input Format
+The input is provided via a text file, e.g., `test_part1.txt`:
+```
+<number_of_points> x1 y1 x2 y2 ... xn yn
+```
+Example:
+```
+5 1 1 5 1 8 5 12 1 15 5
+```
 
-.PHONY: all clean
+## Build Instructions
+From the `part1` folder, run:
+```
+make
+```
+This will create the binary:
+```
+../ch_part1
+```
 
-all: $(PART1_TARGET)
+## Running
+To run the program using the test file:
+```
+../ch_part1 < ../test_part1.txt
+```
+You can also use the Makefile shortcut:
+```
+make run
+```
 
-$(PART1_TARGET): $(PART1_SRCS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+## Example
+For the input:
+```
+5 1 1 5 1 8 5 12 1 15 5
+```
+The expected output is:
+```
+Hull points:
+(1, 1)
+(12, 1)
+(15, 5)
+(8, 5)
+36.000000
+```
 
-clean:
-	rm -f $(PART1_TARGET) *.o
+## Valgrind (Memory Check)
+To run with Valgrind:
+```
+make valgrind
+```
 
-# Usage:
-# To build Part 1:
-#   make
-#
-# To run Part 1 with input file:
-#   ./ch_part1 < test_part1.txt
-#
-# To clean binaries:
-#   make clean
+## Cleaning
+To remove build files:
+```
+make clean
+```
